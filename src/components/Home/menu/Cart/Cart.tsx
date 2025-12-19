@@ -34,8 +34,10 @@ export function Cart({
         <button
           onClick={() => {
             {
-              setCount((c) => c + 1);
-              setTotalprice(totalprice + count * price);
+              setCount(() => count + 1)
+              setTotalprice(
+                (totalprice =  (count* price) ||price)
+              );
             }
           }}
           className="w-full"
@@ -44,7 +46,12 @@ export function Cart({
         </button>
         <p className="px-3">{count}</p>
         <button
-          onClick={() => setCount((c) => Math.max(c - 1, 0))}
+          onClick={() => {setCount(() => count-1)
+            
+            if(count) setTotalprice(
+              (totalprice -= (count >= 1 ? count * price : 1 * price))
+            );
+          }}
           className="w-full"
         >
           -
