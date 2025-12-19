@@ -4,8 +4,9 @@ import { Cart } from "./Cart/Cart";
 
 interface MenuProps {
   setTotalprice: Dispatch<SetStateAction<number>>;
+  totalprice: number;
 }
-export function Menu({ setTotalprice }: MenuProps) {
+export function Menu({ setTotalprice, totalprice }: MenuProps) {
   return (
     <div className="flex flex-col justify-center items-center flex-1 m-5 bg-[#00c8c4] rounded-md p-5 ">
       <div className="text-white text-2xl text-center font-semibold p-5">

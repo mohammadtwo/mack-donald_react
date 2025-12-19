@@ -57,7 +57,7 @@ export function Home() {
           <button className="text-white text-xl ">ثبت سفارش</button>
         </div>
       </div>
-      <Menu setTotalprice={setTotalprice} />
+      <Menu setTotalprice={setTotalprice} totalprice={totalprice} />
     </div>
   );
 }
