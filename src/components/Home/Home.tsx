@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Menu } from "./menu/Menu";
 
 export function Home() {
@@ -21,12 +22,14 @@ export function Home() {
       </g>
     </svg>
   );
+
+  const [totalprice, setTotalprice] = useState(0);
   return (
     <div className="h-screen w-full flex  bg-[#00688f]">
       <div className=" flex flex-col bg-[#01c9c5] p-5 w-75 gap-4 h-fit rounded-md m-5 ">
         <div className="flex justify-between flex-row-reverse">
           <div>جمع کلسفارشات:</div>
-          <div> 400 تومان</div>
+          <div> {totalprice} تومان</div>
         </div>
         <div className="flex justify-between flex-row-reverse">
           <div> حق سرویس و کارمزد:</div>
@@ -42,7 +45,9 @@ export function Home() {
             placeholder="gold"
             className="bg-white outline-none p-1.5 rounded-r-md w-full"
           />
-          <button className="bg-[#018093] h-full w-11 rounded-l-md  ">{tik}</button>
+          <button className="bg-[#018093] h-full w-11 rounded-l-md  ">
+            {tik}
+          </button>
         </div>
         <div className="flex flex-row-reverse justify-between bg-[#feda01] p-1.5 rounded-md">
           <div>مبلغ قابل پرداخت</div>
@@ -52,7 +57,7 @@ export function Home() {
           <button className="text-white text-xl ">ثبت سفارش</button>
         </div>
       </div>
-      <Menu/>
+      <Menu setTotalprice={setTotalprice} />
     </div>
   );
 }

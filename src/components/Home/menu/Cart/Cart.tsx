@@ -1,15 +1,20 @@
 import { useState } from "react";
+import type { Dispatch, SetStateAction } from "react";
 
 type CartProps = {
   title: string;
   price: number;
   img: string;
+  setTotalprice: Dispatch<SetStateAction<number>>;
+  totalprice:number
 };
 
-export function Cart({ title, price, img }: CartProps) {
+export function Cart({ title, price, img, setTotalprice }: CartProps) {
   const [count, setCount] = useState(0);
-
-  return (
+  let orders: number;
+  function setTotalprice() {
+    
+  }
     <div className="grid grid-cols-4 grid-rows-3 bg-white m-auto my-2 w-[95%] h-37.5 gap-x-2.5 overflow-hidden rounded-2xl">
       <div className="col-start-1 col-end-3 row-start-1 row-end-4 relative">
         <img className="object-cover w-full h-full" src={img} alt={title} />
@@ -35,7 +40,7 @@ export function Cart({ title, price, img }: CartProps) {
       </div>
 
       <div className="col-start-4 row-start-3 ml-5 mr-auto">
-        {price * count} <span>تومان</span>
+        {orders= price * count} <span>تومان</span>
       </div>
     </div>
   );
