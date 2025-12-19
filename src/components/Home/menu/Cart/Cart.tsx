@@ -33,10 +33,10 @@ export function Cart({
       <div className="border-2 rounded-[9px] h-6 bg-white flex items-center col-start-3 col-end-4 row-start-3">
         <button
           onClick={() => {
-            {
-              setCount(() => count + 1)
+            {const newCount=count+1
+              setCount(newCount)
               setTotalprice(
-                (totalprice =  (count* price) ||price)
+                totalprice+price
               );
             }
           }}
@@ -46,11 +46,13 @@ export function Cart({
         </button>
         <p className="px-3">{count}</p>
         <button
-          onClick={() => {setCount(() => count-1)
+          onClick={() => {setCount(() => count?count-1:count)
             
-            if(count) setTotalprice(
-              (totalprice -= (count >= 1 ? count * price : 1 * price))
-            );
+            if(count>0){
+              const newCount=count-1;
+              setCount(newCount)
+              setTotalprice(totalprice-price)
+            } ;
           }}
           className="w-full"
         >
